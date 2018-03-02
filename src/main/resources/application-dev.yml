@@ -1,0 +1,58 @@
+server:
+  port: 15593
+  context-path: /
+  tomcat:
+    max-threads: 500
+    uri-encoding: UTF-8
+
+# 数据源配置
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.1.240:3306/face2?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+    username: face2
+    password: face987
+    # druid 连接池属性
+Properties:
+  accountMenu:
+    adminOnly: 5,7,9,10
+    admin: 1,5,6,7,8,9,10
+    accountManagement: 6
+  druid:
+    driver-class-name: com.mysql.jdbc.Driver
+    dbUrl: jdbc:mysql://192.168.1.240:3306/face2?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+    username: face2
+    password: face987
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,log4j
+    connectionProperties:
+    stat:
+      mergeSql: true
+      slowSqlMillis: 5000
+
+# 外部API地址
+api:
+  cdn-url: http://192.168.33.168:15584/frs/upload
+
+# 临时文件路径
+temp:
+  save-path: /home/frstemp/
+
+# 日志保存路径
+
+logging:
+  path: /home/frslogs/authorityservice
+  
+  
